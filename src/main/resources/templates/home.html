@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Отслеживание коронавируса</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+</head>
+
+<h1>Статистика распространения</h1>
+<p>Текущее количество заболеваний по всему миру</p>
+<div class="jumbotron">
+	<h1 class="display-4" th:text="${totalCount}"></h1>
+	<p class="lead">Общее число заболеваний</p>
+</div>
+
+<table class="table">
+	<tr>
+		<th>Провинция</th>
+		<th>Страна</th>
+		<th>Число заболеваний</th>
+
+	</tr>
+	<tr th:each="temp : ${stat}">
+		<td th:text="${temp.state}"></td>
+		<td th:text="${temp.countryName}"></td>
+		<td th:text="${temp.count}">0</td>
+
+	</tr>
+</table>
