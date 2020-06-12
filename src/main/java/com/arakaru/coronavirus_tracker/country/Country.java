@@ -5,10 +5,19 @@ public class Country {
 	private String state;
 	private String countryName;
 	private String count;
+	private String lastCount;
 
 	@Override
 	public String toString() {
 		return "Country [state=" + state + ", countryName=" + countryName + ", count=" + count + "]";
+	}
+
+	public String getLastCount() {
+		return lastCount;
+	}
+
+	public void setLastCount(String lastCount) {
+		this.lastCount = lastCount;
 	}
 
 	public String getState() {

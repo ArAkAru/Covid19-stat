@@ -1,6 +1,12 @@
 package com.arakaru.coronavirus_tracker.service;
 
+import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -9,8 +15,9 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+import java.net.URL;
 import javax.annotation.PostConstruct;
+import javax.imageio.ImageIO;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -41,16 +48,19 @@ public class Data {
 		HttpResponse<String> resp = client.send(req, HttpResponse.BodyHandlers.ofString());
 		StringReader csvBodyReader = new StringReader(resp.body());
 		Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
+		
 		for (CSVRecord record : records) {
 			Country country = new Country();
 			country.setState(record.get(0));
 			country.setCountryName(record.get(1));
 			country.setCount(record.get(record.size() - 1));
-
+			country.setLastCount(record.get(record.size() - 2));
 			newStats.add(country);
 
 		}
-		// System.out.println(newStats);
+	
+		
+		
 	}
 
 }

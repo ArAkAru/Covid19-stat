@@ -9,13 +9,23 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
+	<link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 
 <h1>Статистика распространения</h1>
 <p>Текущее количество заболеваний по всему миру</p>
-<div class="jumbotron">
+
+<div class="jumbotron" >
+	
+	<h1 class="display-4" th:text="${newCount}"></h1>
+	<p class="lead">Новые случаи заражения на: <td th:text="${date}"></td></p>
+	
 	<h1 class="display-4" th:text="${totalCount}"></h1>
 	<p class="lead">Общее число заболеваний</p>
+
+   
+  
+ 
 </div>
 
 <table class="table">
